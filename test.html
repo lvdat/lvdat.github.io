@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .object {
+        width: 70px;
+        height: 20px;
+        line-height: 20px;
+        background: #f80;
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+        cursor: context-menu;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+    </style>
+
+    <script>
+      function init() {
+        window.addEventListener("mousemove", function (e) {
+          const x = window.Event
+            ? e.pageX
+            : event.clientX +
+              (document.documentElement.scrollLeft
+                ? document.documentElement.scrollLeft
+                : document.body.scrollLeft);
+          const y = window.Event
+            ? e.pageY
+            : event.clientY +
+              (document.documentElement.scrollTop
+                ? document.documentElement.scrollTop
+                : document.body.scrollTop);
+
+          let node = document.getElementById("id-object");
+          node.style.top = y - 10 + "px";
+          node.style.left = x - 35 + "px";
+        });
+      }
+
+      window.onload = init;
+    </script>
+  </head>
+  <body>
+    <div id="id-object" class="object">POINTER</div>
+  </body>
+</html>
